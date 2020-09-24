@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Домашняя работа к уроку №1
+//Routing
 
 Route::view('/', 'index');
 Route::view('/about', 'about');
