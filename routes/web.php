@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Домашняя работа к уроку №1
 
 Route::view('/', 'index');
 Route::view('/about', 'about');
