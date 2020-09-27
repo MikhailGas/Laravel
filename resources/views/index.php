@@ -10,6 +10,7 @@
         <li><a href="/"><b>Главная</b></a></li>
         <li><a href="/about">О нас</a></li>
         <li><a href="/news">Новости</a></li>
+        <li><a href="/contacts">Контакты</a></li>
     </ul>
     <h1>Главная</h1>
 </body>

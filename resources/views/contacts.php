@@ -7,10 +7,10 @@
 </head>
 <body>
     <ul>
-        <li><a href="/"><b>Главная</b></a></li>
+        <li><a href="/">Главная</a></li>
         <li><a href="/about">О нас</a></li>
         <li><a href="/news">Новости</a></li>
-        <li><a href="/contacns">Контакты</a></li>
+        <li><a href="/contacts"><b>Контакты</b></a></li>
     </ul>
     <h1>Контакты</h1>
 </body>
