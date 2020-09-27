@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Домашняя работа к уроку №1
+//Routing
 
 Route::view('/', 'index');
 Route::view('/about', 'about');
 Route::view('/news', 'news');
+Route::view('/contacts', 'contacts');
 /*Route::get('/', function () {
     return view('welcome');
 });*/
