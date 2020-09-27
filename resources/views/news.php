@@ -6,12 +6,12 @@
     <title>Новсти</title>
 </head>
 <body>
-    <ul>
-        <li><a href="/">Главная</a></li>
-        <li><a href="/about">О нас</a></li>
-        <li><a href="/news"><b>Новости</b></a></li>
-        <li><a href="/contacts">Контакты</a></li>
-    </ul>
+    <?php include 'menu.php';?>
     <h1>Новости</h1>
+    <ul>
+        <li><a href=""></a>Новость_1</li>
+        <li><a href=""></a>Новость_2</li>
+        <li><a href=""></a>Новость_3</li>
+    </ul>      
 </body>
 </html>

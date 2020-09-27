@@ -6,12 +6,7 @@
     <title>Контакты</title>
 </head>
 <body>
-    <ul>
-        <li><a href="/">Главная</a></li>
-        <li><a href="/about">О нас</a></li>
-        <li><a href="/news">Новости</a></li>
-        <li><a href="/contacts"><b>Контакты</b></a></li>
-    </ul>
+    <?php include 'menu.php';?> 
     <h1>Контакты</h1>
 </body>
 </html>

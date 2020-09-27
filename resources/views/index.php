@@ -6,12 +6,7 @@
     <title>Главная</title>
 </head>
 <body>
-    <ul>
-        <li><a href="/"><b>Главная</b></a></li>
-        <li><a href="/about">О нас</a></li>
-        <li><a href="/news">Новости</a></li>
-        <li><a href="/contacts">Контакты</a></li>
-    </ul>
+<?php include 'menu.php';?>
     <h1>Главная</h1>
 </body>
 </html>
