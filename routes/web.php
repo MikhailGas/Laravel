@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +19,23 @@ use Illuminate\Support\Facades\Route;
 //Домашняя работа к уроку №1
 //Routing
 
-Route::view('/', 'index');
-Route::view('/about', 'about');
-Route::view('/news', 'news');
-Route::view('/contacts', 'contacts');
-/*Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'about'])->name('about');
+
+Route::name('news.')
+->prefix('news')
+->group(function(){
+    Route::get('/categories', [NewsController::class, 'getCategories'])->name('categories');
+    Route::get('/oneNews/{id}', [NewsController::class, 'getOneNews'])->name('oneNews');
+});
+
+
+
+
+/*Route::name('admin.')
+->prefix('admin')
+->group(function(){
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/test1', [IndexController::class, 'test1'])->name('test1');
+    Route::get('/test2', [IndexController::class, 'test2'])->name('test2');
 });*/
