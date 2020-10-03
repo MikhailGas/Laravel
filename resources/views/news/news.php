@@ -9,9 +9,9 @@
     <?php include 'menu.php';?>
     <h1>Новости</h1>
     <ul>
-        <li><a href=""></a>Новость_1</li>
-        <li><a href=""></a>Новость_2</li>
-        <li><a href=""></a>Новость_3</li>
+    <?foreach($news as $val):?>
+        <li><a href="<?=route('news.newsOne', [$val['id']])?>"><?=$val['title']?></a></li>
+    <?endforeach?>
     </ul>      
 </body>
 </html>
