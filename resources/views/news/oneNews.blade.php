@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Одна новость</title>
-</head>
-<body>
-    <h1>{{ $title }}</h1>
-    <p>{{ $text }}</p>
-</body>
-</html>
+@extends('layouts.main')
+@section('title', $news['title'])
+
+@section('content')
+    @include('home.menu')
+    <h1>{{ $news['title'] }}</h1>
+    <p>{{ $news['text'] }}</p>
+@endsection

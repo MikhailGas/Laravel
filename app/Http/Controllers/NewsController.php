@@ -12,7 +12,11 @@ class NewsController extends Controller
         return view('news/categories')->with('categories', News::getCategories());
     }
 
-    public function getNewsByCategoryId($id){
-        return view('news/news')->with('news',News::getNewsByCategoryId($id));
+    public function getNewsByCategory($slug){
+        return view('news/news')->with('news', News::getNewsByCategory($slug));
+    }
+
+    public static function getNewsById($id){
+        return view('news/oneNews')->with('news', News::getNewsById($id));
     }
 }

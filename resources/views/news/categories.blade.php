@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Категории новостей</title>
-</head>
-<body>
-@include('news.menu')
+@extends('layouts.main')
+@section('title', 'Категории новостей')
+
+@section('content')
+    @include('home.menu')
     <h1>Категории новостей</h1>
-    <ul>
-        @foreach($categories as $key => $value)
-        <li><a href="{{ route('news.news', [$key]) }}">{{ $value }}</a></li>
-        @endforeach
-    </ul>
-</body>
-</html>
+        @forelse($categories as $category)
+            <a href="{{ route('news.category', [$category['slug']]) }}">{{ $category['name'] }}</a>
+        @empty
+            <h2>Нет категорий</h2>
+
+        @endforelse
+
+    <hr>
+    @forelse($news as $newsOne)
+        <h2>{{ $newsOne['title'] }}</h2>
+        <a href="{{ route('news.newsOne', [$newsOne['id']]) }}">Подробнее...</a>
+    @empty
+        <h2>Нет новостей</h2>
+    @endforelse
+@endsection

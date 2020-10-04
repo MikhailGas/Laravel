@@ -21,7 +21,7 @@ class News extends Model
             'text' => 'Это хорошая новость про спорт 2'
         ],
         [
-            'id' => '3',
+            'id' => 3,
             'category_id' => '2',
             'title' => 'Новость  3',
             'text' => 'Это хорошая новость про политику 3'
@@ -33,23 +33,32 @@ class News extends Model
             'text' => 'Это хорошая новость про политику 4'
         ]
     ];
-    private static $categories = [
-        '1' => 'Спорт',
-        '2' => 'Политика'
-    ];
+    
+    public static function getNews(){
+        return static::$news;
+    } 
 
-    public static function getCategories(){
-        return static::$categories;
-    }
-
-    public static function getNewsByCategoryId($id){
-        $news = [];
-        foreach(static::$news as $val){
-            if($val['category_id'] == $id){
-                $news[] = $val;
+    public static function getNewsById($id){
+        foreach(static::$news as $newsOne){
+            if($newsOne['id'] == $id){
+                return $newsOne;
+                break;
             }
         }
-        return $news;
+        return [];
+    } 
+
+    public static function getNewsByCategory($slug){
+        $newsList = [];
+        foreach(static::$news as $newsOne){
+            if($newsOne['category_id'] == Categories::getCategoryIdBySlug($slug)){
+                $newsList[] = $newsOne;
+            }
+        }
+        return $newsList;
     }
+
+    
+    
 }
 

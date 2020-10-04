@@ -1,6 +1,4 @@
-<ul>
-    <li><a href="{{ route('home') }}">Главная</a></li>
-    <li><a href="/about">О нас</a></li>
-    <li><a href="{{ route('news.categories') }}">Категории новостей</a></li>
-    <li><a href="/contacts">Админка</a></li>
-</ul>
+<a href="{{ route('home') }}">Главная</a>
+<a href="{{ route('about') }}">О нас</a>
+<a href="{{ route('news.categories') }}">Новости</a>
+<a href="{{ route('admin.index') }}">Админка</a>
