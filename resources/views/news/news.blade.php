@@ -1,7 +1,8 @@
 @extends('layouts.main')
 @section('title', 'Новости')
+@php $current = 'Новости' @endphp
 @section('content')
-    @include ('home.menu')
+  
     <h1>Новости</h1>
     <ul>
     @foreach($news as $val)

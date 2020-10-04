@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoriesController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,6 @@ Route::name('admin.')
     Route::get('/test1', [AdminController::class, 'test1'])->name('test1');
     Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
