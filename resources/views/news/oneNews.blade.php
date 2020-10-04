@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('title', $news['title'])
 @php $current = 'Новости' @endphp
 
