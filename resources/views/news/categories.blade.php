@@ -6,12 +6,12 @@
     <title>Категории новостей</title>
 </head>
 <body>
-<?php include('menu.php'); ?>
+@include('news.menu')
     <h1>Категории новостей</h1>
     <ul>
-        <? foreach($categories as $key => $value):?>
-        <li><a href="<?=route('news.news', [$key])?>"><?=$value?></a></li>
-        <? endforeach?>
+        @foreach($categories as $key => $value)
+        <li><a href="{{ route('news.news', [$key]) }}">{{ $value }}</a></li>
+        @endforeach
     </ul>
 </body>
 </html>

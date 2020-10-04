@@ -6,7 +6,7 @@
     <title>О нас</title>
 </head>
 <body>
-    <?php include 'menu.php';?>
+    @include ('home.menu')
     <h1>О нас</h1>
 </body>
 </html>
