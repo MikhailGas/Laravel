@@ -4,27 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class Categories extends Model
 {
-    private static $categories = [
-        [
-            'id' => 1,
-            'name' => 'Спорт',
-            'slug' => 'sport'
-        ],
-        [
-            'id' => 2,
-            'name' => 'Политика',
-            'slug' => 'politics'
-        ]
-    ];
+    
     public static function getCategories(){
-        return static::$categories;
+       
+        return Files::getDataFromFile('categories');
     }
 
     public static function getCategoryIdBySlug($slug){
-        foreach(static::$categories as $category){
+        foreach(Files::getDataFromFile('categories') as $category){
             if($category['slug'] == $slug){
                 return $category['id'];
             }            
