@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Категории новостей')
 
-@php $current = 'Новости' @endphp
+@section('menu')
+    @include('menu.home_menu')
+@endsection
 @section('content')
     
-    <h1>Категории новостей</h1>
         @forelse($categories as $category)
             <a href="{{ route('news.category', [$category['slug']]) }}">{{ $category['name'] }}</a>
         @empty
