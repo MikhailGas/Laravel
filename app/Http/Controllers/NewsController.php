@@ -13,6 +13,7 @@ class NewsController extends Controller
     }
 
     public function getNewsByCategory($slug){
+        //dd(News::getNewsByCategory($slug));
         return view('news/news')->with('news', News::getNewsByCategory($slug));
     }
 

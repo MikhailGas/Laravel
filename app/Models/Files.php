@@ -12,10 +12,11 @@ class Files extends Model
         return json_decode(FacadesFile::get(storage_path('/'. $file . '.json')), true);
     }
 
-    public static function addDataInFile(string $file, array $data){
+    public static function addDataInFile(string $file, array $data, $url){
         $news = static::getDataFromFile($file);
         $id = static::createId($file);
         $data['id'] = $id;
+        $data['image'] = $url;
         $news[] = $data;
         FacadesFile::put(storage_path('/' . $file . '.json'), json_encode($news, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         return $id;
