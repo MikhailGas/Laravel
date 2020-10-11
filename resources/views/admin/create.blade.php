@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <select name="category_id" id="category_id" class="form-control">
                     @forelse ($categories as $item)
-                        <option @if($item['name'] == old('category_id')) selected @endif value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                        <option @if($item->name == old('category_id')) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
                     @empty
                         <option value="0">Нет категорий</option>
                     @endforelse

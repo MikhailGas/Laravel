@@ -21,8 +21,7 @@ class News extends Model
     } 
 
     public static function getNewsByCategory($slug){
-
-        return DB::table('news')->where('id', Categories::getCategoryIdBySlug($slug))->first();
+        return DB::table('news')->where('category_id', Categories::getCategoryIdBySlug($slug))->get();
         
     }
 
