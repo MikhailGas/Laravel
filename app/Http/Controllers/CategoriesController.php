@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
     public static function getCategories(){
-        return view('news/categories', ['categories' => Categories::getCategories(), 'news' => News::getNews()]);
+        
+        return view('news/categories', ['categories' => Categories::all(), 'news' => News::query()->paginate(3)]);
     }
 }

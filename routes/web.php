@@ -29,7 +29,7 @@ Route::name('news.')
 ->group(function(){
     Route::get('/categories', [CategoriesController::class, 'getCategories'])->name('categories');
     Route::get('/category/{slug}', [NewsController::class, 'getNewsByCategory'])->name('category');
-    Route::get('/newsOne/{id}', [NewsController::class, 'getNewsById'])->name('newsOne');
+    Route::get('/newsOne/{news}', [NewsController::class, 'getNewsById'])->name('newsOne');
 });
 
 
@@ -42,6 +42,14 @@ Route::name('admin.')
     Route::match(['get', 'post'], '/create', [CRUDController::class, 'create'])->name('create');
     Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

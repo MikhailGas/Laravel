@@ -9,16 +9,8 @@ use Illuminate\Support\Facades\File;
 
 class Categories extends Model
 {
-    
-    public static function getCategories(){
-       
-        return DB::table('categories')->get();
-    }
+    protected $fillable =['name', 'slug'];
 
-    public static function getCategoryIdBySlug($slug){
-        return DB::table('categories')->where('slug', $slug)->first()->id;
-        
-    }
 }
 
 
