@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('admin.create') }}" class="mt-5">
+    <form method="POST" action="{{ route('admin.create') }}" class="mt-5" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="title" class="col-md-4 col-form-label text-md-right">Заголовок новости</label>
@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <select name="category_id" id="category_id" class="form-control">
                     @forelse ($categories as $item)
-                        <option @if($item['name'] == old('category_id')) selected @endif value="{{ $item['id'] }}">{{ $item['name'] }}</option>
+                        <option @if($item->name == old('category_id')) selected @endif value="{{ $item->id }}">{{ $item->name }}</option>
                     @empty
                         <option value="0">Нет категорий</option>
                     @endforelse
@@ -50,6 +50,16 @@
                     </label>
                 </div>
             </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-4 col-form-label text-md-right" for="image">
+                Картинка для новости
+            </label>
+            <div class="col-md-6">
+                <input type="file" name="image" id="image">    
+            </div>
+           
         </div>
 
         <div class="form-group row mb-0">

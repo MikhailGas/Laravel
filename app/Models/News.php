@@ -6,33 +6,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\File as HttpFile;
-
+use Illuminate\Support\Facades\DB;
 
 class News extends Model
 {
     public static function getNews(){
+        return DB::table('news')->get();
         
-        return Files::getDataFromFile('news');
     } 
 
     public static function getNewsById($id){
-        foreach(Files::getDataFromFile('news') as $newsOne){
-            if($newsOne['id'] == $id){
-                return $newsOne;
-                break;
-            }
-        }
-        return [];
+        return DB::table('news')->where('id', $id)->first();
+        
     } 
 
     public static function getNewsByCategory($slug){
-        $newsList = [];
-        foreach(Files::getDataFromFile('news') as $newsOne){
-            if($newsOne['category_id'] == Categories::getCategoryIdBySlug($slug)){
-                $newsList[] = $newsOne;
-            }
-        }
-        return $newsList;
+        return DB::table('news')->where('category_id', Categories::getCategoryIdBySlug($slug))->get();
+        
     }
 
     

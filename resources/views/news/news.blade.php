@@ -6,8 +6,21 @@
 @section('content')
   
     <ul>
-    @foreach($news as $val)
-        <li><a href="{{ route('news.newsOne', [$val['id']]) }}">{{ $val['title'] }}</a></li>
-    @endforeach
+        
+        @foreach($news as $val)
+            <li>
+                <h2><a href="{{ route('news.newsOne', [$val->id]) }}">{{ $val->title }}</a></h2>
+                <div class="row mt-2">
+                    <a href="{{ route('news.newsOne', [$val->id]) }}">
+                        <img style="width:200px" src="{{ $val->image ? $val->image : '/storage/default.jpg' }}" alt="Картинка">
+                    </a>
+                </div>
+            </li>
+        @endforeach
+    
+    
+    
+        
+    
     </ul> 
 @endsection
