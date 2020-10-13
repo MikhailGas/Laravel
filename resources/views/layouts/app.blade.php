@@ -73,8 +73,15 @@
         </nav>
 
         <main class="py-4">
+
             <div class="container">
-                @yield('content')
+                <div class="row border pl-2 rounded bg-secondary shadow">
+                    <h1 class="text-light">@Yield('title')</h1>
+                </div>
+               
+                    @yield('content')
+                
+                
             </div>
            
         </main>

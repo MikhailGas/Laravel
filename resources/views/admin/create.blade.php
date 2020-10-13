@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('admin.create') }}" class="mt-5" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('news.store') }}" class="mt-5" enctype="multipart/form-data">
         @csrf
         <div class="form-group row">
             <label for="title" class="col-md-4 col-form-label text-md-right">Заголовок новости</label>
