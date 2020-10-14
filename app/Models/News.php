@@ -10,20 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class News extends Model
 {
-    public static function getNews(){
-        return DB::table('news')->get();
-        
-    } 
+    protected $fillable = ['title', 'text', 'category_id', 'isPrivate', 'image'];
 
-    public static function getNewsById($id){
-        return DB::table('news')->where('id', $id)->first();
-        
-    } 
 
-    public static function getNewsByCategory($slug){
-        return DB::table('news')->where('category_id', Categories::getCategoryIdBySlug($slug))->get();
-        
-    }
+    
 
     
     

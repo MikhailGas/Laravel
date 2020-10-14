@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->text('text');
             $table->boolean('isPrivate')->default(false);
-            $table->bigInteger('category_id');
+            $table->bigInteger('category_id')->unsigned()->nullable(false);
             $table->string('image')->nullable(true)->default(null);
 
             $table->timestamps();

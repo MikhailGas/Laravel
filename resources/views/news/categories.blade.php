@@ -26,4 +26,5 @@
     @empty
         <h2>Нет новостей</h2>
     @endforelse
+    {{ $news->links() }}
 @endsection

@@ -19,15 +19,21 @@ class CategoriesSeeder extends Seeder
     }
 
     private function getData(){
-        $faker = Factory::create('ru_RU');
-        $faker_eng = Factory::create('en_EN');
-        $data = [];
-        for($i = 0; $i < 9; $i++){
-            $data[] =[
-                'name' => $faker->realText(20),
-                'slug' => $faker_eng->word()
-            ];
-        }
+        $data =[
+            [
+                'name' => 'Спорт',
+                'slug' => 'sport'
+            ],
+            [
+                'name' => 'Политика',
+                'slug' => 'politics'
+            ],
+            [
+                'name' => 'Медицина',
+                'slug' => 'medics'
+            ],
+        ];
+        
         return $data;
 
     }

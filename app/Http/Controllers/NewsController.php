@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
 
-    public function getCategories(){
-        return view('news/categories')->with('categories', News::getCategories());
-    }
-
     public function getNewsByCategory($slug){
-        //dd(News::getNewsByCategory($slug));
-        return view('news/news')->with('news', News::getNewsByCategory($slug));
+        return view('news/news')->with('news', News::query()->where('category_id', Categories::where('slug', $slug)->first()->id)->paginate(3));
     }
 
-    public static function getNewsById($id){
-        return view('news/oneNews')->with('news', News::getNewsById($id));
+    public static function getNewsById(News $news){
+        
+        return view('news/oneNews')->with('news', $news);
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\CRUDController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CRUDNewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,19 +31,32 @@ Route::name('news.')
 ->group(function(){
     Route::get('/categories', [CategoriesController::class, 'getCategories'])->name('categories');
     Route::get('/category/{slug}', [NewsController::class, 'getNewsByCategory'])->name('category');
-    Route::get('/newsOne/{id}', [NewsController::class, 'getNewsById'])->name('newsOne');
+    Route::get('/newsOne/{news}', [NewsController::class, 'getNewsById'])->name('newsOne');
 });
 
 
 
 
-Route::name('admin.')
+/*Route::name('admin.')
 ->prefix('admin')
 ->group(function(){
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/', [CRUDController::class, 'index'])->name('index');
+    Route::get('/showNews/{id}', [CRUDController::class, 'index'])->name('showNews');
     Route::match(['get', 'post'], '/create', [CRUDController::class, 'create'])->name('create');
+    Route::delete('/delete/{news}', [CRUDController::class, 'delete'])->name('delete');
     Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-});
+});*/
+
+Route::resource('/admin/news', CRUDNewsController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

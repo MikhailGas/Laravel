@@ -17,6 +17,7 @@
                 </div>
             </li>
         @endforeach
+        {{ $news->links() }}
     
     
     
