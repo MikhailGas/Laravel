@@ -10,7 +10,7 @@ class NewsController extends Controller
 {
 
     public function getNewsByCategory($slug){
-        return view('news/news')->with('news', News::all()->where('category_id', Categories::where('slug', $slug)->first()->id));
+        return view('news/news')->with('news', News::query()->where('category_id', Categories::where('slug', $slug)->first()->id)->paginate(3));
     }
 
     public static function getNewsById(News $news){
