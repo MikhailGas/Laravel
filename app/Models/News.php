@@ -12,7 +12,24 @@ class News extends Model
 {
     protected $fillable = ['title', 'text', 'category_id', 'isPrivate', 'image'];
 
+    public static function rules(){
+        $tableNameCategories = (new Categories)->getTable();
+        return [
+            'title' => 'required|max:255',
+            'text' => 'required',
+            'category_id' => "required|exists:{$tableNameCategories},id",
+            'image' => 'mimes:jpeg,png,bmp|max:1000'
+        ];
+    }
 
+    public static function attributeNames(){
+        return [
+            'title' => 'заголовок новости',
+            'text' => 'текст новости',
+            'category_id' => 'категория новости',
+            'image' => 'изображение'
+        ];
+    }
     
 
     

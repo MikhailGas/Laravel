@@ -27,7 +27,7 @@ class CRUDNewsController extends Controller
      */
     public function create()
     {
-        return view ('admin.create', [
+        return view ('admin/news_form', [
             'categories' => Categories::all()
         ]);
     }
@@ -43,6 +43,7 @@ class CRUDNewsController extends Controller
         
         
         if($request->isMethod('post')){
+            $this->validate($request, News::rules(),[], News::attributeNames());
             $url = null;
             if($request->file('image')){
                 $path = Storage::putFile('public', $request->file('image'));
@@ -84,7 +85,7 @@ class CRUDNewsController extends Controller
     public function edit(News $news)
     {
         
-        return view('admin/edit', ['news' => $news, 'categories' => Categories::all()]);
+        return view('admin/news_form', ['news' => $news, 'categories' => Categories::all()]);
     }
 
     /**
@@ -96,16 +97,19 @@ class CRUDNewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        if($request->isMethod('post')){
+        if($request->isMethod('put')){
+          
+            $news->fill($request->all());
             $url = null;
             if($request->file('image')){
                 $path = Storage::putFile('public', $request->file('image'));
                 $url = Storage::url($path);
+                $news->image = $url;
             }
             
-            $news->fill($request->all());
+            
             $news->isPrivate = $request->isPrivate ? 1 : 0;
-            dd($news);
+            
             $news->save();
 
             
