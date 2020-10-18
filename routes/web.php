@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\CRUDController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CRUDNewsController;
+use App\Http\Controllers\Admin\CRUDUsersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,14 +50,18 @@ Route::name('news.')
 
 Route::resource('/admin/news', CRUDNewsController::class);
 
+Route::name('user.')
+->prefix('user')
+->group(function(){
+    Route::get('/', [CRUDUsersController::class, 'index'])->name('users');
+    Route::get('/edit/{user}', [CRUDUsersController::class, 'edit'])->name('edit');
+    Route::put('/store', [CRUDUsersController::class, 'store'])->name('store');
+    Route::post('/toggle', [CRUDUsersController::class, 'toggle'])->name('toggle');
+
+});
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
