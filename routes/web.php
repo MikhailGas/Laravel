@@ -55,13 +55,14 @@ Route::name('user.')
 ->group(function(){
     Route::get('/', [CRUDUsersController::class, 'index'])->name('users');
     Route::get('/edit/{user}', [CRUDUsersController::class, 'edit'])->name('edit');
+    Route::post('/store', [CRUDUsersController::class, 'store'])->name('store');
     Route::put('/store', [CRUDUsersController::class, 'store'])->name('store');
-    Route::post('/toggle', [CRUDUsersController::class, 'toggle'])->name('toggle');
-
+    Route::post('/toggle/{user}', [CRUDUsersController::class, 'toggle'])->name('toggle');
+    Route::get('/delete/{user}', [CRUDUsersController::class, 'delete'])->name('delete');
+    
 });
 
 Auth::routes();
-
 
 
 
