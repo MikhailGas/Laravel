@@ -49722,6 +49722,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./my */ "./resources/js/my.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49857,6 +49859,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/my.js":
+/*!****************************!*\
+  !*** ./resources/js/my.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.onload = function () {
+  var buttons = document.querySelectorAll('.toggle');
+  var delete_btn = document.querySelectorAll('.delete');
+  var modal_win = document.querySelector('#confirm');
+  buttons.forEach(function (item) {
+    if (item.textContent == ' Да ') {
+      item.classList.toggle('btn-warning');
+    } else {
+      item.classList.toggle('btn-success');
+    }
+
+    item.addEventListener('click', function () {
+      fetch('/user/toggle/' + item.getAttribute('data-id'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: JSON.stringify({
+          "id": item.getAttribute('data-id')
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (result) {
+        if (result.result == 1) {
+          item.textContent = 'Да';
+          item.classList.toggle('btn-success');
+          item.classList.toggle('btn-warning');
+        } else {
+          item.textContent = 'Нет';
+          item.classList.toggle('btn-warning');
+          item.classList.toggle('btn-success');
+        }
+      });
+    });
+  });
+};
 
 /***/ }),
 
