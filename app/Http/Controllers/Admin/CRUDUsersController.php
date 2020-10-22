@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CRUDUsersController extends Controller
 {
@@ -39,10 +41,19 @@ class CRUDUsersController extends Controller
         return view('admin.users.edit', ['user' => $user]);
     }
 
-    public function store(Request $request){
-        if ($request->isMethod('post')){
+    public function update(User $user, Request $request){
+      
+        if ($request->isMethod('put')){
             $this->validate($request,User::rules());
-            dd($request);
+            $user->fill($request->all());
+            $user->password = Hash::make($request->new_password);
+            $user->isAdmin = 0;
+            
+            $user->save();
+            $request->flash();
+            
+           
         }
+        return redirect('user/');
     }
 }

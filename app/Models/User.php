@@ -45,10 +45,10 @@ class User extends Authenticatable
         return
         [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'old_password' => ['required', 'string', 'min:3'],
             'new_password' => ['required', 'string', 'min:3', 'confirmed'],
-            'confirm_password' => ['required', 'string', 'min:3', 'confirmed'],
+            'new_password_confirmation' => ['required', 'string', 'min:3'],
         ];
     }
 }

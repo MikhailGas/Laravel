@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Пользователи')
-
+@dump($errors)
 @section('menu')
     @include('menu.admin_menu')
     
@@ -15,9 +15,10 @@
                 <div class="card-header">{{ __('Редактирование профиля пользователя') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.store') }}">
+                    <form method="POST" action="{{ route('user.update', $user->id) }}">
                         @csrf
-
+                        @method('PUT')
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Имя') }}</label>
 
@@ -75,12 +76,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="confirm_password" class="col-md-4 col-form-label text-md-right">{{ __('Повторите пароль') }}</label>
+                            <label for="new_password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Повторите пароль') }}</label>
 
                             <div class="col-md-6">
-                                <input id="confirm_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="confirm_password" required autocomplete="new_password">
+                                <input id="new_password_confirmation" type="password" class="form-control @error('new_password_confirmation') is-invalid @enderror" name="new_password_confirmation" required autocomplete="new_password_confirmation">
 
-                                @error('confirm_password')
+                                @error('new_password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
