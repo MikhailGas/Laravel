@@ -17,6 +17,14 @@
                 <li class="nav-item {{ request()->routeIs('user.users') }}">
                     <a class="nav-link" href="{{ route('user.users') }}">Пользователи</a>
                 </li>
+
+                <li class="nav-item {{ request()->routeIs('source.index') }}">
+                    <a class="nav-link" href="{{ route('source.index') }}">Ресурсы</a>
+                </li>
+
+                <li class="nav-item {{ request()->routeIs('source.parse') }}">
+                    <a class="nav-link" href="{{ route('source.parse') }}">Парсить</a>
+                </li>
                 
             </ul>
 

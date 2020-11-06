@@ -8,5 +8,7 @@
     <div class="row mt-2">
         <img style="width:600px" src="{{ $news->image ? $news->image : '/storage/default.jpg' }}" alt="Картинка">
     </div>
-    <p>{{ $news->text }}</p>
+    <h2>{{ $news->text }}</h2>
+    <p>Ресурс: {{ $news->source }}</p>
+    <p>{{ $news->pubDate }}</p>
 @endsection
