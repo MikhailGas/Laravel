@@ -8,7 +8,9 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\CRUDController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CRUDNewsController;
+use App\Http\Controllers\Admin\CRUDSourceController;
 use App\Http\Controllers\Admin\CRUDUsersController;
+use App\Http\Controllers\Admin\ParserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,19 +38,19 @@ Route::name('news.')
 });
 
 
-
-
-/*Route::name('admin.')
-->prefix('admin')
-->group(function(){
-    Route::get('/', [CRUDController::class, 'index'])->name('index');
-    Route::get('/showNews/{id}', [CRUDController::class, 'index'])->name('showNews');
-    Route::match(['get', 'post'], '/create', [CRUDController::class, 'create'])->name('create');
-    Route::delete('/delete/{news}', [CRUDController::class, 'delete'])->name('delete');
-    Route::get('/test2', [AdminController::class, 'test2'])->name('test2');
-});*/
-
 Route::resource('/admin/news', CRUDNewsController::class);
+
+Route::name('source.')
+->prefix('source')
+->middleware('auth')
+->group(function(){
+    Route::get('/parse', [ParserController::class, 'index'])->name('parse');
+    Route::get('/', [CRUDSourceController::class, 'index'])->name('index');
+    Route::match(['post', 'get'], '/add', [CRUDSourceController::class, 'add'])->name('add');
+    Route::get('/delete/{source}', [CRUDSourceController::class, 'delete'])->name('delete');
+    
+});
+
 
 Route::name('user.')
 ->prefix('user')

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class News extends Model
 {
-    protected $fillable = ['title', 'text', 'category_id', 'isPrivate', 'image'];
+    protected $fillable = ['title', 'text', 'category_id', 'isPrivate', 'image', 'source', 'link', 'pubDate'];
 
     public static function rules(){
         $tableNameCategories = (new Categories)->getTable();

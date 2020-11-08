@@ -10,6 +10,6 @@ class CategoriesController extends Controller
 {
     public static function getCategories(){
         
-        return view('news/categories', ['categories' => Categories::all(), 'news' => News::query()->paginate(3)]);
+        return view('news/categories', ['categories' => Categories::all(), 'news' => News::query()->orderBy('id', 'desc')->paginate(5)]);
     }
 }
