@@ -9,11 +9,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('home') }}">Главная</a>
+                    <a class="nav-link" href="{{ route('home') }}">Выход</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('news.create') }}">
                     <a class="nav-link" href="{{ route('news.create') }}">Создать новость</a>
                 </li>
+
                 <li class="nav-item {{ request()->routeIs('user.users') }}">
                     <a class="nav-link" href="{{ route('user.users') }}">Пользователи</a>
                 </li>
@@ -25,11 +26,4 @@
                 <li class="nav-item {{ request()->routeIs('source.parse') }}">
                     <a class="nav-link" href="{{ route('source.parse') }}">Парсить</a>
                 </li>
-                
-            </ul>
 
-            <!-- Right Side Of Navbar -->
-          
-        </div>
-    </div>
-</nav>
