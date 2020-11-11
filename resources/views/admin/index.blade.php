@@ -29,7 +29,7 @@
             @empty
                 Нет новостей
             @endforelse
-            {{ $news->onEachSide(0)->links() }}
+            {{ $news->links() }}
         </div>
         <div class="col-md-8 border shadow">
             @if( isset( $newsOne) )

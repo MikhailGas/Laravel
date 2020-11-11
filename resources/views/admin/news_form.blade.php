@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <form method="POST" action="@if(isset($news->id)) {{ route('news.update', $news) }} @else {{ route('news.store') }} @endif" class="mt-5 border p-2 col col-md-12" enctype="multipart/form-data">
+        <form method="POST" action="@if(isset($news->id)) {{ route('news.update', $news) }} @else {{ route('news.store') }} @endif" class="mt-5 border p-2 col col-md-6" enctype="multipart/form-data">
             @csrf
             @if (isset($news->id))
                 @method('PUT')
@@ -58,10 +58,10 @@
                 </div>
             @endif
             <div class="form-group row">
-                <label for="textEdit" class="col-md-4 col-form-label text-md-right">Текст новости</label>
+                <label for="text" class="col-md-4 col-form-label text-md-right">Текст новости</label>
     
                 <div class="col-md-6">
-                    <textarea id="textEdit" class="form-control" name="text">{{ $news->text ?? old('text') }}</textarea>
+                    <textarea id="text" class="form-control" name="text">{{ $news->text ?? old('text') }}</textarea>
                 </div>
             </div>
     
@@ -102,7 +102,6 @@
                 </div>
             </div>
         </form>
-        
     </div>
     
 @endsection
