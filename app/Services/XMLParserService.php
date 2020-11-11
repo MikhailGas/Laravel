@@ -7,6 +7,7 @@ use App\Models\News;
 
 class XMLParserService {
     public function saveNews($link){
+       
         $xml = XmlParser::load($link);
         
             $data = $xml->parse([
